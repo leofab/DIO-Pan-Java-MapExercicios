@@ -45,12 +45,16 @@ public class Main {
         Set<Map.Entry<String, Estado>> entries = estadosNome.entrySet();
 
         String estadoMinNome = "";
+        Integer estadoMinPop = 0;
 
         for(Map.Entry<String, Estado> entry: entries){
-            if(entry.getValue().equals(estadoMin)) estadoMinNome = entry.getKey();
+            if(entry.getValue().equals(estadoMin)) {
+                estadoMinNome = entry.getValue().getNome();
+                estadoMinPop = entry.getValue().getPop();
+            }
         }
 
-        System.out.println("Estado com menor pop : " + estadoMinNome);
+        System.out.println("Estado com menor pop : " + estadoMinNome + "  - Pop : " + estadoMinPop);
 
     }
 }
