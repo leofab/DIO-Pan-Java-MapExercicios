@@ -40,7 +40,11 @@ public class Main {
 
         System.out.println("\n <--------- Exiba o estado c menor pop --------> \n");
 
+        Map<String, EstadosPop> estadosPop = new TreeMap<>(new EstadosPop());
+
         Estado estadoMin = Collections.min(estadosNome.values());
+        System.out.println("<--------- Imprimindo a collections.min estadosMin --------> \n");
+        System.out.println("estadosMin -> " + estadoMin + " \n");
 
         Set<Map.Entry<String, Estado>> entries = estadosNome.entrySet();
 
@@ -56,6 +60,25 @@ public class Main {
 
         System.out.println("Estado com menor pop : " + estadoMinNome + "  - Pop : " + estadoMinPop);
 
+        System.out.println("\n <--------- Exiba o estado c maior pop --------> \n");
+
+        Estado estadoMax = Collections.max(estados.values());
+        System.out.println("<--------- Imprimindo a collections.max estadosMax --------> \n");
+        System.out.println("estadosMax -> " + estadoMax + " \n");
+
+        Set<Map.Entry<String, Estado>> entries1 = estados.entrySet();
+
+        String estadoMaxNome = "";
+        Integer estadoMaxPop = 0;
+
+        for(Map.Entry<String, Estado> entry: entries1){
+            if(entry.getValue().equals(estadoMax)) {
+                estadoMaxNome = entry.getValue().getNome();
+                estadoMaxPop = entry.getValue().getPop();
+            }
+        }
+
+        System.out.println("Estado com maior pop : " + estadoMaxNome + "  - Pop : " + estadoMaxPop);
     }
 }
 
@@ -115,4 +138,13 @@ class Estado implements Comparable<Estado>{
         return nome;
     }
 
+}
+
+class EstadosPop implements Comparator<Estado>{
+
+    @Override
+    public int compare(Estado o1, Estado o2) {
+        int pop = Integer.compare(o1.getPop(), o2.getPop());
+        return pop;
+    }
 }
