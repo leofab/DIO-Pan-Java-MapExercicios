@@ -6,13 +6,21 @@ import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
+
+        System.out.println("\n<--------- Crie um dicionario e relacione estados e populações --------> \n");
         Map<String, Estado> estados = new LinkedHashMap<>(){{
             put("PE", new Estado("Pernambuco", 9616621));
             put("AL", new Estado("Alagoas", 3351543));
             put("CE", new Estado("Ceará", 9187103));
             put("RN", new Estado("Rio Grande do Norte", 3534265));
         }};
-        System.out.println(estados);
+        System.out.println("<--------- Exiba o dicionário --------> \n");
+        System.out.println(estados + "\n ---------------------------------------------------------------------\n");
+        System.out.println(" <-------------- Substituir População de RN --------------\n");
+
+        estados.put("RN", new Estado("Rio Grande do Norte", 3534165));
+        System.out.println("<--------- Exiba o dicionário --------> \n");
+        System.out.println(estados + "\n ---------------------------------------------------------------------\n");
     }
 }
 
