@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("\n<--------- Crie um dicionario e relacione estados e populações --------> \n");
+
         Map<String, Estado> estados = new LinkedHashMap<>(){{
             put("PE", new Estado("Pernambuco", 9616621));
             put("AL", new Estado("Alagoas", 3351543));
@@ -16,11 +17,22 @@ public class Main {
         }};
         System.out.println("<--------- Exiba o dicionário --------> \n");
         System.out.println(estados + "\n ---------------------------------------------------------------------\n");
+
         System.out.println(" <-------------- Substituir População de RN --------------\n");
 
         estados.put("RN", new Estado("Rio Grande do Norte", 3534165));
         System.out.println("<--------- Exiba o dicionário --------> \n");
+
+        System.out.println("<--------- Confira se PB esta no dic, se nao, add --------> \n");
+
+        System.out.println("PB está no dic ? : " + estados.containsKey("PB") + "\n");
+        estados.put("PB", new Estado("Paraíba", 4039277));
+        System.out.println("<--------- Exiba o dicionário --------> \n");
         System.out.println(estados + "\n ---------------------------------------------------------------------\n");
+
+        System.out.println("<--------- Exiba a pop de PE --------> \n");
+        System.out.println("População PE : " + estados.get("PE").getPop());
+
     }
 }
 
