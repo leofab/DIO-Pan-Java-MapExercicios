@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,6 +30,27 @@ public class Main {
 
         System.out.println("<--------- Exiba a pop de PE --------> \n");
         System.out.println("População PE : " + estados.get("PE").getPop());
+
+        System.out.println("\n <--------- Exiba todos estados em ordem de inserção --------> \n");
+        for(Map.Entry<String, Estado> est : estados.entrySet()) System.out.println(est);
+
+        System.out.println("\n <--------- Exiba todos estados em ordem alfabética --------> \n");
+        Map<String, Estado> estadosNome = new TreeMap<>(estados);
+        for(Map.Entry<String, Estado> est : estadosNome.entrySet()) System.out.println(est);
+
+        System.out.println("\n <--------- Exiba o estado c menor pop --------> \n");
+
+        Estado estadoMin = Collections.min(estadosNome.values());
+
+        Set<Map.Entry<String, Estado>> entries = estadosNome.entrySet();
+
+        String estadoMinNome = "";
+
+        for(Map.Entry<String, Estado> entry: entries){
+            if(entry.getValue().equals(estadoMin)) estadoMinNome = entry.getKey();
+        }
+
+        System.out.println("Estado com menor pop : " + estadoMinNome);
 
     }
 }
@@ -88,7 +107,8 @@ class Estado implements Comparable<Estado>{
 
     @Override
     public int compareTo(Estado o) {
-        return 0;
+        int nome = this.getNome().compareTo(o.getNome());
+        return nome;
     }
 
 }
